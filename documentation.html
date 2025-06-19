@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TeachIQ – AI-Powered Educational Content Generator</title>
+        
+        <!-- Code piece for Web Browser -->
+        <link rel="icon" type="image/png" sizes="32x32" href="TeachIQ.webp" />
+        
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="TeachIQ - Educational AI Powered Tool." />
+        <meta name="keywords" content="" />
+        <meta name="author" content="Siyamthanda Dlakavu" />
+        
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="TeachIQ" />
+        <meta property="og:description" content="TeachIQ Educational Generated Content." />
+        <meta property="og:image" content="https://yourdomain.com/TeachIQ.webp" />
+        <meta property="og:url" content="https://yourdomain.com" />
+        <meta property="og:type" content="website" />
+        
+        <!-- External Stylesheet : Font Awesome icon library from the CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        
+        <!-- External Libraries For Generating Pdfs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        
+        <!-- Internal Index.css -->
+        <link rel="stylesheet" href="/Css/index.css">
+        
+        <!-- Styles for... -->
+        <style>
+            .logo {
+            height: 75px;
+            margin-right: 30px;
+            }
+            
+            .hero {
+            text-align: center; /* This centers the inline and inline-block content like text, h2, p */
+            padding: 30px 10px;
+            background-color: #6c757d;
+            color: var(--light-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <img src="TeachIQ.webp" alt="TeachIQ Logo" class="logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="studyGuides.html"><i class="fas fa-book"></i> Study Guides</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="container">
+            <section class="hero">
+                <h2>TeachIQ: Prompt Engineering Methodology</h2>
+                <p>A deep dive into how TeachIQ crafts precise instructions for AI to generate educational content.</p>
+            </section>
+            <section class="content-section" style="margin-top: 40px;">
+                <div class="input-section" style="flex: 1;">
+                    
+                    <!-- Section 1: Overall Philosophy -->
+                    <h2 class="section-title"><i class="fas fa-lightbulb"></i> 1. Overall Philosophy: Structured and Intent-Driven Prompting</h2>
+                    <p class="section-paragraph">The philosophy behind TeachIQ's prompt engineering is to create **structured, comprehensive, and intent-driven prompts**. Instead of relying on a single, open-ended text input, the system breaks down the content generation request into granular, categorized parameters. This approach ensures:</p>
+                    <ul>
+                        <li><strong>Precision:</strong> By providing specific details (content type, subject, grade, complexity), the LLM receives a clear and unambiguous request.</li>
+                        <li><strong>Control:</strong> Users gain fine-grained control over the output characteristics, leading to more predictable and usable results.</li>
+                        <li><strong>Reduced Ambiguity:</strong> Minimizes the LLM's need to infer intent, leading to more accurate and relevant content.</li>
+                        <li><strong>Scalability:</strong> Allows for systematic expansion of content types and parameters without a complete overhaul of the core prompting logic.</li>
+                    </ul>
+                    
+                    <!-- Section 2: Input-Driven Prompt Construction -->
+                    <h2 class="section-title" style="margin-top: 30px;"><i class="fas fa-code-branch"></i> 2. Input-Driven Prompt Construction</h2>
+                    <p class="section-paragraph">The HTML frontend (`index.html`) serves as the primary interface for collecting user intent. Each field in the form directly maps to a crucial component of the final LLM prompt. The backend (`app.py`) then dynamically assembles these components into a coherent instruction for the Gemini model.</p>
+                    
+                    <h3 class="section-subtitle" style="margin-top: 20px;"><i class="fas fa-th-list"></i> 2.1. User Input Parameters</h3>
+                    <p class="section-paragraph">The following parameters are captured from the user interface and used in prompt construction:</p>
+                    <ul>
+                        <li><strong><code>contentType</code>:</strong> The primary type of educational material (e.g., `lesson_plan`, `quiz`, `study_guide`, `worksheet`, `presentation`, `summary`, `activity`, `rubric`). This dictates the overall structure and purpose of the generated text.</li>
+                        <li><strong><code>subjectArea</code>:</strong> The academic discipline (e.g., `math`, `science`, `history`, `english`, `foreign_lang`, `arts`, `computer`, `business`). This guides the LLM in using appropriate vocabulary, concepts, and pedagogical approaches relevant to the subject.</li>
+                        <li><strong><code>gradeLevel</code>:</strong> The target audience's academic level (e.g., `elementary`, `middle`, `high`, `college`, `professional`). This is critical for adjusting the language complexity, depth of explanation, and type of examples provided.</li>
+                        <li><strong><code>topic</code>:</strong> The central subject or title of the content. This is the core focus around which the entire content is generated.</li>
+                        <li><strong><code>details</code>:</strong> Additional, free-form instructions or specific requirements from the user. This allows for highly customized requests, overriding or refining default behaviors. Examples include "include hands-on activities," "10-question multiple choice," or "focus on inputs and outputs."</li>
+                        <li><strong><code>complexity</code>:</strong> The intellectual difficulty level (e.g., `basic`, `intermediate`, `advanced`). This further refines the `gradeLevel` and `subjectArea` to ensure the content is appropriately challenging.</li>
+                        <li><strong><code>format</code>:</strong> The desired structural output format (e.g., `paragraph`, `bullet_points`, `step_by_step`, `table`, `markdown`). This instructs the LLM on how to structure its response.</li>
+                    </ul>
+                    
+                    <h3 class="section-subtitle" style="margin-top: 20px;"><i class="fas fa-file-code"></i> 2.2. Prompt Structure in `app.py`</h3>
+                    <p class="section-paragraph">The backend Python script (`app.py`) constructs a single, comprehensive prompt string using f-strings, incorporating all the user-provided parameters.</p>
+                    <p class="section-paragraph">The general template for the prompt is:</p>
+                    <pre class="code-block">
+                        <code>
+                            prompt = f"""
+                                Generate {`contentType`} on the topic of "{`topic`}" for {`gradeLevel`} students in the {`subjectArea`} subject area.
+                                Here are additional details and requirements: "{`details`}"
+                                Ensure the complexity is {`complexity`}.
+                                Please present the content in {`output_format`.replace('_', ' ')} format.
+                                """
+                        </code>          
+                    </pre>
+                    <p class="section-paragraph"><strong>Key Elements of Prompt Engineering within this structure:</strong></p>
+                    <ul>
+                        <li><strong>Direct Instruction:</strong> The prompt starts with a direct command: "Generate {`contentType`}..." This immediately sets the LLM's task.</li>
+                        <li><strong>Clear Context (Who, What, For Whom):</strong> The "on the topic of...", "for {`gradeLevel`} students," and "in the {`subjectArea`} subject area" components provide essential context, guiding the LLM's knowledge retrieval and tone.</li>
+                        <li><strong>"Additional Details" for Customization:</strong> The `{`details`}` field acts as a powerful open-ended instruction slot. This is where the user can provide nuances that pre-defined dropdowns cannot capture, making the content generation truly flexible. The LLM is explicitly instructed to incorporate these requirements.</li>
+                        <li><strong>Explicit Complexity Control:</strong> The "Ensure the complexity is {`complexity`}" directive guides the LLM in terms of vocabulary, depth of analysis, and conceptual difficulty.</li>
+                        <li><strong>Output Format Enforcement:</strong> The "Please present the content in {`output_format`.replace('\_', ' ')} format" is crucial. LLMs are highly capable of adhering to specified output structures, and this instruction helps guarantee the response is parsable and usable by the frontend. The `replace('_', ' ')` ensures format names like `bullet_points` become `bullet points` for natural language understanding by the LLM.</li>
+                    </ul>
+                    
+                    <!-- Section 3: Role and System Instructions -->
+                    <h2 class="section-title" style="margin-top: 30px;"><i class="fas fa-robot"></i> 3. Role and System Instructions (Implicit)</h2>
+                    <p class="section-paragraph">While the `app.py` directly passes a user prompt, the `google.generativeai` library allows for a "system instruction" or "system message" in chat models. In the provided `app.py`, this is implicitly handled by the `genai.GenerativeModel(GEMINI_MODEL)` initialization and the `model.generate_content(prompt)` call.</p>
+                    <p class="section-paragraph">For the `gemini-2.5-flash-preview-05-20` model, the instruction about being an "expert educational content generator" with goals of "accurate, engaging, and age-appropriate learning materials" is sent as a `system` message. This persona helps condition the LLM's response style and focus.</p>
+                    
+                    <!-- Section 4: Backend Integration -->
+                    <h2 class="section-title" style="margin-top: 30px;"><i class="fas fa-server"></i> 4. Backend Integration and Response Handling</h2>
+                    <p class="section-paragraph">The `app.py` Flask application acts as an intermediary, receiving the structured request from the frontend and forwarding the constructed prompt to the Google Gemini API.</p>
+                    <ul>
+                        <li><strong>Model Selection:</strong> <code>GEMINI_MODEL = "gemini-2.5-flash-preview-05-20"</code> explicitly selects the specific Gemini model variant known to be accessible and suitable for this task.</li>
+                        <li><strong>API Call:</strong> <code>model.generate_content(prompt)</code> sends the complete prompt to the Gemini API.</li>
+                        <li><strong>Response Parsing:</strong> <code>response.text</code> extracts the generated content directly from the LLM's response.</li>
+                        <li><strong>JSON Output:</strong> The backend returns this content as a JSON object: <code>{"content": ai_generated_content}</code>, which the frontend JavaScript (`index.js`) then easily parses and displays.</li>
+                        <li><strong>Error Handling:</strong> Basic error handling is in place to catch API errors (e.g., quota issues, invalid model) and provide feedback to the user.</li>
+                    </ul>
+                    
+                    <!-- Section 5: Future Enhancements -->
+                    <h2 class="section-title" style="margin-top: 30px;"><i class="fas fa-rocket"></i> 5. Future Prompt Engineering Enhancements</h2>
+                    <p class="section-paragraph">To further refine the prompt engineering methodology, future improvements could include:</p>
+                    <ul>
+                        <li><strong>Few-Shot Examples:</strong> For more complex or nuanced content types, including a few "example" input/output pairs directly in the prompt (or referencing them) can significantly improve the LLM's ability to generate desired formats and styles.</li>
+                        <li><strong>Chaining Prompts:</strong> For multi-part or highly structured content (e.g., a detailed lesson plan with multiple sub-sections), the system could break down the generation into several sequential LLM calls, each building on the previous one.</li>
+                        <li><strong>Adaptive Temperature/Parameters:</strong> Dynamically adjusting `temperature` or `max_tokens` based on `complexity` or `contentType` could offer more granular control over the LLM's output. For instance, lower temperature for quizzes (factual accuracy) and higher for creative activities.</li>
+                        <li><strong>Output Validation and Correction:</strong> Implement post-processing steps (either on the backend or even with another LLM call) to validate the generated content against specific criteria (e.g., ensuring a quiz has exactly 10 questions, or a table has the correct number of columns).</li>
+                        <li><strong>Negative Constraints:</strong> Explicitly tell the LLM what *not* to do (e.g., "Do not include external links," "Do not exceed 500 words").</li>
+                    </ul>
+                    <p class="section-paragraph">By combining a structured user interface with intelligent prompt construction, EduGenius aims to leverage the power of LLMs to provide a flexible, efficient, and high-quality educational content generation experience.</p>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-column">
+                    <h3>TeachIQ</h3>
+                    <p>Empowering educators and learners with AI-powered content generation tools.</p>
+                    <div class="social-links">
+                        <a href="/Html/Social-Pages/twitter.html" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="/Html/Social-Pages/facebook.html" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="/Html/Social-Pages/linkedIn.html" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="/Html/Social-Pages/youtube.html" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="studyGuides.html">Study Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Documentation</h3>
+                    <ul>
+                        <li><a href="documentation.html">Prompt Engineering Methodology</a></li>
+                        <li><a href="documentation2.html">Rate Limits & Usage Costs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 TeachIQ. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>

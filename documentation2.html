@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini API: Rate Limits & Usage Costs</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="TeachIQ.webp" />
+
+    <meta name="description" content="Documentation on Google Gemini 2.5 Flash Preview 05-20 API rate limits and usage costs." />
+    <meta name="keywords" content="Gemini API, Google AI, Rate Limits, Usage Costs, Pricing, 2.5 Flash, AI API" />
+    <meta name="author" content="TeachIQ" />
+
+    <meta property="og:title" content="Gemini API: Rate Limits & Usage Costs" />
+    <meta property="og:description" content="Detailed information on rate limits and pricing for Gemini 2.5 Flash Preview 05-20." />
+    <meta property="og:image" content="https://yourdomain.com/TeachIQ.jpg" /> <meta property="og:url" content="https://yourdomain.com/gemini-docs.html" /> <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="/Css/index.css">
+
+    <style>
+        header {
+        background-color: #1B1212; /* Light background for the header */
+        box-shadow: var(--box-shadow);
+        }
+        
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        }
+        
+        .logo img {
+            height: 80px; /* Adjust logo height as needed */
+            width: auto; /* Maintain aspect ratio */
+            vertical-align: middle; /* Align image vertically */
+        }
+        
+        nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+        }
+        
+        nav a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: var(--transition);
+        }
+        
+        nav a:hover {
+        color: var(--primary-color);
+        }
+        
+        nav a i {
+            font-size: 0.9rem;
+        }
+        
+        .hero {
+            text-align: center; /* This centers the inline and inline-block content like text, h2, p */
+            padding: 30px 10px;
+            background-color: #6c757d;
+            color: var(--light-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="TeachIQ.webp" alt="TeachIQ Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="studyGuides.html"><i class="fas fa-book"></i> Study Guides</a></li>
+                    <li><a href="https://ai.google.dev/gemini-api/docs" target="_blank"><i class="fas fa-info-circle"></i> API Docs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero" style="text-align: center; padding: 30px 10px; background-color: #6c757d; color: var(--light-color); border-radius: var(--border-radius); margin-bottom: 20px;">
+            <h2>Gemini API: Rate Limits & Usage Costs</h2>
+            <p>A detailed overview of the quotas and pricing for the Gemini 2.5 Flash Preview 05-20 model.</p>
+        </section>
+
+        <section class="content-section" style="margin-top: 40px;">
+            <h2><i class="fas fa-tachometer-alt"></i> Gemini 2.5 Flash Preview 05-20: Rate Limits</h2>
+            <p>Rate limits are applied per project and are measured across four dimensions: <strong>Requests per Minute (RPM)</strong>, <strong>Tokens per Minute (TPM)</strong>, and <strong>Requests per Day (RPD)</strong>. Exceeding any of these limits will result in a rate limit error (HTTP 429).</p>
+
+            <h3>Current Rate Limits for <code>gemini-2.5-flash-preview-05-20</code>:</h3>
+            <ul>
+                <li><strong>RPM (Requests Per Minute):</strong> 2,000</li>
+                <li><strong>TPM (Tokens Per Minute):</strong> 3,000,000</li>
+                <li><strong>RPD (Requests Per Day):</strong> 100,000</li>
+            </ul>
+            <p class="note">
+                <strong>Important Note:</strong> Preview models often have more restrictive rate limits compared to stable or generally available models. These limits are subject to change as the model progresses.
+            </p>
+            <p>You can request an upgrade to higher tiers with increased rate limits as your API usage and spending increase. This option usually appears on the API keys page in Google AI Studio for projects that qualify.</p>
+
+            <h2><i class="fas fa-dollar-sign"></i> Gemini 2.5 Flash Preview 05-20: Usage Costs</h2>
+            <p>The pricing for the Gemini API is generally structured on a per-million-token basis, with separate costs for input and output tokens. For preview models, there's often a free tier before paid usage applies.</p>
+
+            <h3>Pricing for <code>gemini-2.5-flash-preview-05-20</code>:</h3>
+
+            <h4>Free Tier:</h4>
+            <ul>
+                <li><strong>Input:</strong> Free of charge</li>
+                <li><strong>Output:</strong> Free of charge</li>
+            </ul>
+
+            <h4>Paid Tier (per 1M tokens in USD):</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Cost per 1M Tokens (USD)</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Input Price (Text / Image / Video)</strong></td>
+                        <td>$0.15</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Input Price (Audio)</strong></td>
+                        <td>$1.00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Output Price (Non-thinking)</strong></td>
+                        <td>$0.60</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Output Price (Thinking - if enabled)</strong></td>
+                        <td>$3.50</td>
+                        <td>Higher cost when the model's "thinking" capability is active.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Important Considerations:</h3>
+            <ul>
+                <li>
+                    <strong>"Thinking" capability:</strong> The Gemini 2.5 Flash model now includes a "thinking" capability. If you utilize this, the output pricing for thinking tokens will be higher. When using the standard variant (without the ":thinking" suffix), the model will avoid generating thinking tokens.
+                </li>
+                <li>
+                    <strong>Context Caching:</strong> There are also separate costs for context caching if you use that feature. For Gemini 2.5 Flash Preview, context caching is priced at <strong>$0.0375 (text/image/video)</strong> and <strong>$0.25 (audio)</strong> per 1M tokens, and <strong>$1.00 per 1,000,000 tokens per hour</strong> for storage.
+                </li>
+                <li>
+                    <strong>Grounding with Google Search:</strong> This feature has a free tier for up to <strong>1,500 RPD</strong>, then it's <strong>$35 per 1,000 requests</strong>.
+                </li>
+                <li>
+                    <strong>Text-to-Speech (TTS) models:</strong> If you are using the Text-to-Speech variant of Gemini 2.5 Flash Preview (`gemini-2.5-flash-preview-tts`), the pricing is:
+                    <ul>
+                        <li><strong>Input:</strong> $0.50 per 1M text tokens</li>
+                        <li><strong>Output:</strong> $10.00 per 1M audio tokens</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Data Usage for Product Improvement:</strong> For the Free Tier, your data may be used to improve Google products. For the Paid Tier, this is generally not the case.
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3>TeachIQ</h3>
+                <p>Empowering educators and learners with AI-powered content generation tools.</p>
+                <div class="social-links">
+                  <a href="/Html/Social-Pages/twitter.html" target="_blank"><i class="fab fa-twitter"></i></a>
+                  <a href="/Html/Social-Pages/facebook.html" target="_blank"><i class="fab fa-facebook"></i></a>
+                  <a href="/Html/Social-Pages/linkedIn.html" target="_blank"><i class="fab fa-linkedin"></i></a>
+                  <a href="/Html/Social-Pages/youtube.html" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Study Guides</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><a href="documentation.html">Prompt Engineering Methodology</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 TeachIQ. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

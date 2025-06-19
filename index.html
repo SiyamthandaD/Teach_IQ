@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TeachIQ – AI-Powered Educational Content Generator</title>
+        
+        <!-- Code piece for Web Browser -->
+        <link rel="icon" type="image/png" sizes="32x32" href="TeachIQ.webp" />
+        
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="TeachIQ - Educational AI Powered Tool." />
+        <meta name="keywords" content="" />
+        <meta name="author" content="Siyamthanda Dlakavu" />
+        
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="TeachIQ" />
+        <meta property="og:description" content="TeachIQ Educational Generated Content." />
+        <meta property="og:image" content="https://yourdomain.com/TeachIQ.webp" />
+        <meta property="og:url" content="https://yourdomain.com" />
+        <meta property="og:type" content="website" />
+        
+        <!-- External Stylesheet : Font Awesome icon library from the CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        
+        <!-- External Libraries For Generating Pdfs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        
+        <!-- Internal Index.css -->
+        <link rel="stylesheet" href="/Css/index.css">
+        
+        <!-- Styles for... -->
+        <style>
+            .about-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+            }
+            
+            .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            }
+            
+            .about-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            }
+            
+            .logo {
+            height: 75px;
+            margin-right: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <img src="TeachIQ.webp" alt="TeachIQ Logo" class="logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="studyGuides.html"><i class="fas fa-book"></i> Study Guides</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="about" class="about-section">
+            <h2>About Us</h2>
+            <p>
+                TeachIQ is an AI-powered educational tool designed to empower educators and learners.
+            </p>
+        </section>
+        <div class="container">
+            <div class="tabs" role="tablist">
+                <div class="tab active" data-tab="generator" role="tab" aria-selected="true" tabindex="0">Content Generator</div>
+                <div class="tab" data-tab="history" role="tab" aria-selected="false" tabindex="0">History</div>
+                <div class="tab" data-tab="templates" role="tab" aria-selected="false" tabindex="0">Templates</div>
+            </div>
+            <div class="tab-content active" id="generator-tab" role="tabpanel" aria-labelledby="generator-tab">
+                <section class="content-generator">
+                    <div class="input-section">
+                        <h2 class="section-title"><i class="fas fa-edit"></i> Input Parameters</h2>
+                            <form id="contentForm">
+                                <div class="form-group">
+                                    <label for="contentType">
+                                        Content Type
+                                    </label>
+                                    <select id="contentType" required>
+                                        <option value="">Select Content Type...</option>
+                                        <option value="lesson_plan">Lesson Plan</option>
+                                        <option value="quiz">Quiz/Test</option>
+                                        <option value="study_guide">Study Guide</option>
+                                        <option value="worksheet">Worksheet</option>
+                                        <option value="summary">Chapter Summary</option>
+                                        <option value="activity">Learning Activity</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subjectArea">
+                                        Subject Area
+                                    </label>
+                                    <select id="subjectArea" required>
+                                        <option value="">Select subject area...</option>
+                                        <option value="math">Mathematics</option>
+                                        <option value="science">Physical Science</option>
+                                        <option value="accounting">Accounting</option>
+                                        <option value="history">History</option>
+                                        <option value="english">English (Home Language)</option>
+                                        <option value="computer">Computer Science</option>
+                                        <option value="business">Business Studies</option>
+                                        <option value="lo">Life Orientation</option>
+                                        <option value="ems">Economics, Management Sciences</option>
+                                        <option value="tech">Technology</option>
+                                        <option value="geo">Geography</option>
+                                    </select>
+                                </div>    
+                                <div class="form-group">
+                                    <label for="gradeLevel">
+                                        Grade Level
+                                    </label>
+                                    <select id="gradeLevel" required>
+                                        <option value="">Select grade level...</option>
+                                        <option value="elementary">Pre-School (R)</option>
+                                        <option value="middle">Primary School (1-7)</option>
+                                        <option value="high">High School (8-12)</option>
+                                        <option value="college">College/University</option>
+                                        <option value="professional">Professional Development</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="topic">
+                                        Topic/Title
+                                    </label>
+                                    <input type="text" id="topic" placeholder="Enter your topic or title..." required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="details">
+                                        Additional Details/Requirements
+                                    </label>
+                                    <textarea id="details" placeholder="Provide any additional details, specific requirements, or learning objectives..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="complexity">
+                                        Complexity Level
+                                    </label>
+                                    <select id="complexity">
+                                        <option value="basic">Basic</option>
+                                        <option value="intermediate" selected>Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                    </select>
+                                </div>
+                                <div class="form-group tooltip">
+                                    <label for="format">
+                                        Output Format <i class="fas fa-info-circle"></i>
+                                    </label>
+                                    <span class="tooltiptext">
+                                        Select the format for your generated content
+                                    </span>
+                                    <select id="format">
+                                        <option value="paragraph">Paragraph</option>
+                                        <option value="bullet_points" selected>Bullet Points</option>
+                                        <option value="step_by_step">Step-by-Step</option>
+                                        <option value="table">Table</option>
+                                        <option value="markdown">Markdown</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-generate">
+                                    <i class="fas fa-robot"></i> Generate Content
+                                </button>
+                            </form>
+                    </div>   
+                    <div class="output-section">
+                        <h2 class="section-title"><i class="fas fa-file-alt"></i> Generated Content</h2>
+                        <div class="loading" id="loadingIndicator">
+                            <div class="spinner"></div>
+                            <p>Generating your content... This may take a moment.</p>
+                        </div>
+                        <div class="output-content" id="outputContent">
+                            <p class="output-placeholder">Your AI-generated educational content will appear here...</p>
+                        </div>
+                        <button class="btn btn-copy" id="copyBtn">
+                            <i class="fas fa-copy"></i> Copy to Clipboard
+                        </button>
+                        <button class="btn" id="downloadBtn" style="margin-top: 10px; background-color: var(--warning-color);">
+                            <i class="fas fa-download"></i> Download as PDF
+                        </button>
+                        <button class="btn" id="saveBtn" style="margin-top: 10px; background-color: var(--success-color);">
+                            <i class="fas fa-save"></i> Save to History
+                        </button>
+                    </div>
+                </section>
+            </div>
+            <div class="tab-content" id="history-tab" role="tabpanel" aria-labelledby="generator-tab" hidden>
+                <section class="history-section">
+                    <h2 class="section-title"><i class="fas fa-history"></i> Your Generated Content History</h2>
+                    <div class="history-items" id="historyItems">
+                    </div>
+                </section>
+            </div>
+            <div class="tab-content" id="templates-tab" role="tabpanel" aria-labelledby="templates-tab" hidden>
+                <section class="history-section">
+                    <h2 class="section-title"><i class="fas fa-clone"></i> Content Templates</h2>
+                    <p>Browse and use our pre-made templates to get started quickly.</p>
+                    <div class="features" id="templateGallery">
+                    </div>
+                </section>
+            </div>
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Generate high-quality educational content in seconds, saving you hours of preparation time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Curriculum-Aligned</h3>
+                    <p>Our AI understands educational standards and creates content that meets curriculum requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Fully Customizable</h3>
+                    <p>Tailor the content to your specific needs with adjustable parameters and detailed inputs.</p>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-column">
+                    <h3>TeachIQ</h3>
+                    <p>Empowering educators and learners with AI-powered content generation tools.</p>
+                    <div class="social-links">
+                        <a href="/Html/Social-Pages/twitter.html" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="/Html/Social-Pages/facebook.html" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="/Html/Social-Pages/linkedIn.html" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="/Html/Social-Pages/youtube.html" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="studyGuides.html">Study Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Documentation</h3>
+                    <ul>
+                        <li><a href="documentation.html">Prompt Engineering Methodology</a></li>
+                        <li><a href="documentation2.html">Rate Limits & Usage Costs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 TeachIQ. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/Js/index.js">
+        </script>
+    </body>
+</html>
